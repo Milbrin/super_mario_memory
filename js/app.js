@@ -264,7 +264,6 @@ var app = {
     }
     //Si le compteur de combo est supérieur à 0
     if (app.combo>1){
-      $('#gameMessages').text(app.combo + ' HIT COMBO !!!'); //on affiche le compteur de combo actuel
       app.comboSwitch();
     }
     else{
@@ -290,7 +289,7 @@ var app = {
     else{
       app.currentTimer = 0;
     }
-    $('#gameMessages').text('OneUp');
+    $('#gameMessages').text(app.combo + ' HIT COMBO !!! 1-UP !!!');
   },
 
   comboStar(){
@@ -300,7 +299,7 @@ var app = {
     setTimeout(function(){
       clearInterval(starredTimer);
     }, 4000);
-    $('#gameMessages').text('Star');
+    $('#gameMessages').text(app.combo + ' HIT COMBO !!! SUPER STAR !!!');
   },
 
   comboPow(){
@@ -315,10 +314,11 @@ var app = {
     }
     $('.powCards').addClass('isFlipped');
     $('.unmatched').off('click', app.clickCard);
+    $('#gameMessages').text(app.combo + ' HIT COMBO !!! POW !!!')
     setTimeout(function(){
       $('.unmatched').removeClass('isFlipped').on('click', app.clickCard).removeClass('powCards');
     },2000)
-
+;
   },
 
   //Test pour déterminer la victoire finale de la partie
