@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.0/css/bootstrap-reboot.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Super Mario Memory</title>
+</head>
+
+<body>
+
+        <!-- section englobant toute la zone de menu -->
+        <section id="startMenu">
+            <h1>SUPER MARIO MEMORY</h1>
+            <aside id="notice"> <!-- zone de gauche qui contient les instructions et les crédits -->
+                <div id="instructions"> <!-- les instructions avec leur titre -->
+                    <h2>Instructions</h2>
+                    <p>Le but est de réaliser le memory le plus vite possible. Mais attention le temps est limité, il ne faut pas s'endormir! Vous pouvez tenter de réaliser des combos en validant plusieurs paires à la suite!</p>
+                    <p>Veuillez choisir un niveau de difficulté pour lancer la partie.</p>
+                </div>
+                <div id="credits"> <!-- les crédits -->
+                    Réalisation: Georges Sempéré / Tests et idées: Gabriel et Salomé Sempéré, dans le cadre d'une évaluation pour l'école <a href="https://www.oclock.io">O'Clock</a>. Les images utilisées restent la propriété de leurs créateurs. Les personnages de l'univers Mario sont la propriété de Nintendo. 2018.
+                </div>
+            </aside>
+            <nav id="chooseLevel"> <!-- la nav pour la sélection des niveaux -->
+                <span>CHOOSE LEVEL</span>
+                <ul> <!-- la liste des boutons de sélections des niveaux -->
+                    <li class="pipe"><a class="mode" data-columns="5" data-maxtimer="45000" href="">TOAD</a></li>
+                    <li class="pipe"><a class="mode" data-columns="7" data-maxtimer="60000" href="">MARIO</a></li>
+                    <li class="pipe"><a class="mode" data-columns="9" data-maxtimer="90000" href="">BOWSER</a></li>
+                </ul>
+            </nav>
+            <div id="display">Welcome!!!</div> <!-- zone d'affichage de messages -->
+            <table id="highScores"> <!-- tableau des highscores -->
+                <thead>
+                    <th>N°WIN</th>
+                    <th>LEVEL</th>
+                    <th>CHRONO</th>
+                    <th>COMBO</th>
+                </thead>
+                <tbody id="score"> <!-- zone où on génèrera les scores des parties -->
+
+                </tbody>
+            </table>
+        </section>
+
+        <!-- section englobant toute la zone de jeu -->
+        <main id="main">
+            <!-- Ici sera généré le plateau de jeu -->
+            <div class="box" id="progressBox"> <!-- le container du timer -->
+                <progress id="timer" value="0" max="0"></progress> <!-- le jauge du timer -->
+            </div>
+            <span class="box" id="gameMessages"> <!-- zone d'affichage de messages durant la partie -->
+
+            </span>
+
+            <span class="box" id="cancel"> <!-- bouton d'annulation -->
+                Cancel
+            </span>
+
+        </main>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="js/app.js"></script>
+    <!-- Salut à toi ami codeur  ^o^ -->
+</body>
+
+</html>

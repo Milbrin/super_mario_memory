@@ -1,0 +1,417 @@
+/* Import de la police */
+@font-face {
+  font-family: "SuperMario256";
+  src: url('SuperMario256.ttf');
+}
+
+/* variables css pour les couleurs */
+:root{
+  --blue: #09c;
+  --red: #f44;
+  --yellow: #ee1;
+}
+
+/* ZONE MENU */
+
+/* "Page" menu qui se met en surimpression du plateau de jeu */
+#startMenu {
+  display: grid;
+  grid-template-columns: 2fr 5fr 3fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-areas:  'notice title score'
+                        'notice buttons score'
+                        'notice display score';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('../images/backgroundstartMenu.jpg');
+  background-size: cover;
+  z-index: 9;
+}
+
+/* Div servant d'affichage dans la page Menu */
+#display {
+  grid-area: display;
+  font-family: 'SuperMario256';
+  text-align: center;
+  font-size: calc(0.9rem + 1.5vw + 0.1px); /* Méthode pour avoir une police plus responsive*/
+  padding: 2rem;
+  border-radius: 8px;
+  border: 3px solid white;
+  margin: auto;
+  background-color: var(--blue);
+  color: white;
+  -webkit-transition: 2s;
+  transition: 2s;
+}
+
+/* Pour l'animation quand on perd */
+#display.gameOver {
+  background-color: var(--red);
+  color: white;
+}
+
+/* Pour l'animation quand on gagne */
+#display.win {
+  background-color: var(--yellow);
+  color: var(--blue);
+}
+
+
+/* La zone de gauche de la page Menu où les instructions et les crédits sont affichés */
+#notice {
+  grid-area: notice;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  height: 95%;
+  width: 90%;
+  margin: auto;
+  border-radius: 8px;
+  font-size: calc(0.6rem + 0.5vw + 0.1px);
+  padding: 1rem;
+}
+
+#instructions{
+  background: linear-gradient(to bottom, #fff9bf 0%,#d88827 100%);
+  border: 10px outset #FFE908;
+  border-radius: 30px;
+  padding: 1rem;
+  font-weight: bold;
+}
+
+/* Affichage police des crédits plus petits */
+#credits {
+  background: linear-gradient(to bottom, #fff9bf 0%,#d88827 100%);
+  border: 10px outset #FFE908;
+  border-radius: 30px;
+  padding: 1rem;
+  font-size: calc(0.4rem + 0.4vw + 0.1px);
+  font-weight: bold;
+}
+
+/* On centre "Instructions" */
+h2{
+  text-align: center;
+  text-decoration: underline;
+}
+
+/* Titre principal */
+h1 {
+  grid-area: title;
+  margin: auto;
+  font-family: 'SuperMario256';
+  font-size: calc(0.9rem + 1.5vw + 0.1px);
+  width: 90%;
+  padding: 2rem;
+  background-color: white;
+  border-radius: 8px;
+  border: 6px solid var(--red);
+  color: var(--blue);
+  text-align: center;
+}
+
+/* Div qui contient les boutons des levels */
+#chooseLevel {
+  grid-area: buttons;
+  width: 90%;
+  height: auto;
+  background-color: var(--red);
+  border-radius: 8px;
+  border: 3px solid white;
+  margin: auto;
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Liste des boutons */
+#chooseLevel ul {
+  padding-left: 0;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  list-style: none;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+/* Elements de liste des boutons */
+#chooseLevel .pipe {
+  height: 100%;
+  width: 30%;
+}
+
+/* Boutons de sélection de level */
+#chooseLevel ul a {
+  display: block;
+  width: 100%;
+  text-align: center;
+  background-color: var(--blue);
+  padding: 2rem;
+  color: white;
+  font-size: calc(0.6rem + 0.9vw + 0.1px);
+  font-weight: bold;
+  border-radius: 8px;
+  border: 1px solid white;
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+}
+
+/* animation au survol des boutons de level */
+#chooseLevel ul a:hover {
+  color: var(--blue);
+  text-decoration: none;
+  background-color: var(--yellow);
+}
+
+/* table des highScores */
+table {
+  display: none;
+  background-color: white;
+  grid-area: score;
+  margin: 5% auto auto auto;
+  font-size: calc(0.6rem + 0.5vw + 0.1px);
+  text-align: center;
+  border-radius: 8px;
+}
+
+/* ajout d'une bordure sur les éléments de la table */
+table, th, td {
+  border: 2px solid var(--red);
+  padding: 0.2rem;
+}
+
+/* Style de l'entête de la table */
+thead {
+  background-color: var(--red);
+  color: white
+}
+
+/* ON PASSE A LA ZONE DE JEU */
+
+/* La balise contenant toute notre zone de jeu à proprement dite  */
+#main {
+  background-image: url('../images/backgroundGameScreen.jpg');
+  background-size: cover;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  height: 100vh;
+  width: 100vw;
+}
+
+/* Style du plateau qui contient les cartes */
+#plateau {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: auto;
+  -webkit-perspective: 2000px;
+          perspective: 2000px; /* Nécessaire à l'animation 3D des cartes, taille axe Z */
+}
+
+/* style de chaque carte */
+.carte {
+  position: relative;
+  -webkit-transition: -webkit-transform 0.6s;
+  transition: -webkit-transform 0.6s;
+  transition: transform 0.6s;
+  transition: transform 0.6s, -webkit-transform 0.6s;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-transform-origin: center left;
+          transform-origin: center left;
+  cursor: pointer; /* pour avoir un curseur "doigt" quand on survole les carte */
+  box-shadow: 0px 0px 10px 2px #656565;
+}
+
+/* styles communs aux 2 faces des cartes */
+.cache, .image {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+}
+
+/* verso de la carte */
+.cache {
+  background-color: white; /* bg blanc au cas où (normalement image dynamique en bg par js) */
+}
+
+/* recto de la carte, application des images, le bg-position sera mis en js */
+.image {
+  background-image: url('../images/sprite.png');
+  background-size: cover;
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg); /* positionée initialement "de dos" */
+}
+
+/* classe qui fait tourner .carte et donc ses faces .cache et .image */
+.isFlipped {
+  -webkit-transform: translateX(+100%) rotateY(-180deg);
+          transform: translateX(+100%) rotateY(-180deg);
+}
+
+/* classe appliquée sur les paires validées (contour doré) */
+.isGolden{
+  box-shadow: 0px 0px 3px 0.1vw var(--yellow);
+}
+
+.isWarning{
+  box-shadow: 0px 0px 3px 0.1vw var(--red);
+}
+
+/* 3 classes appliquées en js qui ajoutent un dos de carte selon le level */
+.toad {
+  background-image: url('../images/mushroom.png');
+  background-size: cover;
+}
+
+.mario {
+  background-image: url('../images/flower.png');
+  background-size: cover;
+}
+
+.bowser {
+  background-image: url('../images/star.gif');
+  background-size: cover;
+}
+
+/* classe générique pour styler les parties sur le plateau de jeu */
+.box{
+  width: calc(30vw + 30vh + 0.1px);
+  max-width: 90%;
+  height: 10%;
+  min-height: 50px;
+  max-height: 20%;
+  background-color: var(--blue);
+  border-radius: 12px;
+  border: 3px solid white;
+  margin: auto;
+  position: relative;
+}
+
+/* style de la barre progress pour le timer (trouvé sur le net, j'ai juste customisé un peu) */
+progress[value] {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border: none;
+  position: absolute;
+  top: calc(50% - 10px);
+  left: 5%;
+  width: 90%;
+  height: 20px;
+  background-color: white;
+  border-radius: 10px;
+  -webkit-box-shadow: 0 2px 3px rgba(0, 0, 0, .5) inset;
+          box-shadow: 0 2px 3px rgba(0, 0, 0, .5) inset;
+}
+
+progress[value]::-webkit-progress-bar {
+  background-color: white;
+  border-radius: 10px;
+  -webkit-box-shadow: 0 2px 3px rgba(0, 0, 0, .5) inset;
+          box-shadow: 0 2px 3px rgba(0, 0, 0, .5) inset;
+}
+
+progress[value]::-webkit-progress-value {
+  background-image: -webkit-linear-gradient( 135deg, transparent 33%, rgba(0, 0, 0, 0.1) 33%, rgba(0, 0, 0, 0.1) 66%, transparent 66%),
+  -webkit-linear-gradient( top, rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0.25)),
+  -webkit-linear-gradient( left, var(--blue), var(--red));
+  background-size: 35px 20px, 100% 100%, 100% 100%;
+  border-radius: 10px;
+}
+
+progress[value]::-moz-progress-bar {
+  background-image: -moz-linear-gradient( 135deg, transparent 33%, rgba(0, 0, 0, 0.1) 33%, rgba(0, 0, 0, 0.1) 66%, transparent 66%),
+  -moz-linear-gradient( top, rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0.25)),
+  -moz-linear-gradient( left, var(--blue), var(--red));
+  border-radius: 10px;
+  background-size: 35px 20px, 100% 100%, 100% 100%;
+}
+
+/* zone où sont affichés les messages pendant la partie (hurry up et combo) */
+#gameMessages{
+  padding: 0.9rem;
+  color: white;
+  font-size: calc(1.9rem + 0.9vw + 0.1px);
+  text-align: center;
+  font-family: 'SuperMario256';
+
+}
+
+/* classe appliquée en css déclenchant une animation quand le timer dépasse 70% */
+.explosive{
+  background-color: var(--red);
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  -webkit-transition: 2s;
+  transition: 2s;
+}
+
+/* bouton pour annuler une partie en cours et revenir dans le Menu */
+#cancel{
+  color: white;
+  font-size: calc(1.9rem + 0.9vw + 0.1px);
+  font-weight:bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-align: center;
+  padding: calc(0.9rem + 0.4vw + 0.1px);
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+}
+
+/* animation au survol du bouton cancel */
+#cancel:hover{
+  color: var(--blue);
+  background-color: var(--yellow);
+}
+
+/* MEDIA QUERIES */
+
+/* On passe les boutons de level en colonne et on les élargit quand on est pas sur un grand écran */
+@media (max-width: 1100px){
+  #chooseLevel ul{
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+
+  #chooseLevel .pipe{
+    width: 60%;
+  }
+
+}
