@@ -320,7 +320,6 @@ thead {
   cursor: pointer;
   -webkit-transition: 0.6s;
   transition: 0.6s;
-  min-height: 40px;
 }
 /* classe générique pour styler les parties sur le plateau de jeu */
 .box{
@@ -389,8 +388,6 @@ progress[value]::-moz-progress-bar {
   border-radius: 10px;
   background-size: 35px 20px, 100% 100%, 100% 100%;
 }
-
-/* zone où sont affichés les messages pendant la partie (hurry up et combo) */
 
 
 /* classe appliquée en css déclenchant une animation quand le timer dépasse 70% */
