@@ -48,7 +48,7 @@ var app = {
     app.currentTimer = 0; // on remet le temps de la partie à zéro
     $('#timer').attr('max', app.maxTimer); //on alimente l'élément html progress avec les bonnes valeurs
     $('#timer').attr('value', 0);
-    $('#gameMessages').text(''); //on vide le contenu de la div des messages du jeu
+    $('#gameMessages').text('Here comes a new challenger!!!'); //on vide le contenu de la div des messages du jeu
     $('.box').detach().removeClass('explosive').appendTo($('#main')); //on enlève le statut "explosif" des divs concernées
     //(note: obligé de detach et appendTo pour éviter des problèmes avec l'animation au retour sur l'écran de jeu)
     app.cards = []; //on vide le tableau de cartes (sinon elles s'accumulent dedans à chaque nouvelle partie)
@@ -253,6 +253,7 @@ var app = {
       app.phase = false; //on repasse à la phase initiale du jeu
       app.combo = 0; //on repasse le compteur de combo à zéro
       app.testCombo();
+      $('#gameMessages').text('Try again!!'); //on vide la box
     }, 1000);
   },
 
@@ -266,8 +267,8 @@ var app = {
     if (app.combo>1){
       app.comboSwitch();
     }
-    else{
-      $('#gameMessages').text(''); //on vide la box
+    else if(app.combo ===1){
+      $('#gameMessages').text('1 HIT COMBO !!!'); //on vide la box
     }
     //TODO : suivant les combos, on débloque des bonus (temps en plus, cartes retournées pendant 1 sec, etc)
   },

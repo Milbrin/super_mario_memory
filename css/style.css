@@ -309,19 +309,45 @@ thead {
   background-image: url('../images/star.gif');
   background-size: cover;
 }
-
+#progressBox{
+  width: 60%;
+  height: 40px;
+  position: relative;
+}
+#gameMessages{
+  font-weight:bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+  min-height: 40px;
+}
 /* classe générique pour styler les parties sur le plateau de jeu */
 .box{
-  width: calc(30vw + 30vh + 0.1px);
-  max-width: 90%;
-  height: 10%;
-  min-height: 50px;
-  max-height: 20%;
-  background-color: var(--blue);
-  border-radius: 12px;
+  text-align: center;
+  font-size: calc(0.9rem + 1.5vw + 0.1px); /* Méthode pour avoir une police plus responsive*/
+  padding: 1rem;
+  border-radius: 8px;
   border: 3px solid white;
   margin: auto;
-  position: relative;
+  background-color: var(--blue);
+  color: white;
+  text-align: center;
+}
+
+/* bouton pour annuler une partie en cours et revenir dans le Menu */
+#cancel{
+  font-weight:bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+}
+
+/* animation au survol du bouton cancel */
+#cancel:hover{
+  color: var(--blue);
+  background-color: var(--yellow);
 }
 
 /* style de la barre progress pour le timer (trouvé sur le net, j'ai juste customisé un peu) */
@@ -365,14 +391,7 @@ progress[value]::-moz-progress-bar {
 }
 
 /* zone où sont affichés les messages pendant la partie (hurry up et combo) */
-#gameMessages{
-  padding: 0.9rem;
-  color: white;
-  font-size: calc(1.9rem + 0.9vw + 0.1px);
-  text-align: center;
-  font-family: 'SuperMario256';
 
-}
 
 /* classe appliquée en css déclenchant une animation quand le timer dépasse 70% */
 .explosive{
@@ -383,24 +402,6 @@ progress[value]::-moz-progress-bar {
   transition: 2s;
 }
 
-/* bouton pour annuler une partie en cours et revenir dans le Menu */
-#cancel{
-  color: white;
-  font-size: calc(1.9rem + 0.9vw + 0.1px);
-  font-weight:bold;
-  text-transform: uppercase;
-  cursor: pointer;
-  text-align: center;
-  padding: calc(0.9rem + 0.4vw + 0.1px);
-  -webkit-transition: 0.6s;
-  transition: 0.6s;
-}
-
-/* animation au survol du bouton cancel */
-#cancel:hover{
-  color: var(--blue);
-  background-color: var(--yellow);
-}
 
 /* MEDIA QUERIES */
 
